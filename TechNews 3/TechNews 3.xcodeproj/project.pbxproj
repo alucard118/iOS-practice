@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0204347D196D82220089800C /* tabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 0204347C196D82220089800C /* tabbar.png */; };
 		0241F3951965979E00C83732 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0241F3941965979E00C83732 /* Foundation.framework */; };
 		0241F3971965979E00C83732 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0241F3961965979E00C83732 /* CoreGraphics.framework */; };
 		0241F3991965979E00C83732 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0241F3981965979E00C83732 /* UIKit.framework */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0204347C196D82220089800C /* tabbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar.png; sourceTree = "<group>"; };
 		0241F3911965979E00C83732 /* TechNews 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TechNews 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0241F3941965979E00C83732 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0241F3961965979E00C83732 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -100,6 +102,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02043479196D81290089800C /* images */ = {
+			isa = PBXGroup;
+			children = (
+				0204347C196D82220089800C /* tabbar.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		0241F3881965979E00C83732 = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +143,7 @@
 		0241F39A1965979E00C83732 /* TechNews 3 */ = {
 			isa = PBXGroup;
 			children = (
+				02043479196D81290089800C /* images */,
 				0241F3A31965979E00C83732 /* BIDAppDelegate.h */,
 				0241F3A41965979E00C83732 /* BIDAppDelegate.m */,
 				0241F3A61965979E00C83732 /* Images.xcassets */,
@@ -266,6 +277,7 @@
 				0241F3A71965979E00C83732 /* Images.xcassets in Resources */,
 				0241F3D6196597E700C83732 /* BIDFourthViewController.xib in Resources */,
 				0241F3CC196597CC00C83732 /* BIDSecondViewController.xib in Resources */,
+				0204347D196D82220089800C /* tabbar.png in Resources */,
 				0241F3D1196597D800C83732 /* BIDThirdViewController.xib in Resources */,
 				0241F3C7196597BB00C83732 /* BIDFirstViewController.xib in Resources */,
 			);

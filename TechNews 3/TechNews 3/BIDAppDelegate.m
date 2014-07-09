@@ -52,9 +52,12 @@
     
     //tab bar
     tabBarController=[[UITabBarController alloc]init];
+//    UIImage *image=[UIImage imageNamed:@"tabbar.png"];
+//    [self.tabBarController.tabBar setBackgroundImage:image];
     tabBarController.viewControllers=[NSArray arrayWithObjects:firstNavController,secondNavController,thirdNavController,fourthNavController, nil];
     self.window.rootViewController=tabBarController;
     [self.window addSubview:tabBarController.view];
+  
     
     
     // Override point for customization after application launch.

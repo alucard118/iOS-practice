@@ -10,6 +10,8 @@
 #import "BIDFirstScrollViewCell.h"
 #import "BIDCCFNewsTableViewCell.h"
 
+#define kDuration 0.7
+
 @interface BIDFirstViewController ()
 
 @end
@@ -113,10 +115,24 @@
 }
 
 -(void)handleSwipesLeft:(UISwipeGestureRecognizer *)paramSender{
-        self.tabBarController.selectedIndex=1;
+    CATransition *animation = [CATransition animation];
+    animation.delegate = self;
+    animation.duration = kDuration;
+    animation.timingFunction = UIViewAnimationCurveEaseInOut;
+    animation.type=kCATransitionPush;
+    animation.subtype = kCATransitionFromRight;
+    [[self.tabBarController.view layer]addAnimation:animation forKey:@"animation"];
+    self.tabBarController.selectedIndex=1;
 }
 
 -(void)handleSwipesRight:(UISwipeGestureRecognizer *)paramSender{
+    CATransition *animation = [CATransition animation];
+    animation.delegate = self;
+    animation.duration = kDuration;
+    animation.timingFunction = UIViewAnimationCurveEaseInOut;
+    animation.type=kCATransitionPush;
+    animation.subtype = kCATransitionFromLeft;
+    [[self.tabBarController.view layer]addAnimation:animation forKey:@"animation"];
     self.tabBarController.selectedIndex=3;
 }
 
