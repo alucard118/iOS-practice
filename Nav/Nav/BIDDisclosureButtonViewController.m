@@ -59,6 +59,25 @@
     cell.accessoryType=UITableViewCellAccessoryDetailDisclosureButton;
     return cell;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSUInteger row=[indexPath row];
+    NSString *msg=[self.list objectAtIndex:row];
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Select" message:[NSString stringWithFormat:@"You selected %@.",msg] delegate:nil cancelButtonTitle:@"Yep" otherButtonTitles: nil];
+    [alert show];
+}
+
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+    if (childController==nil) {
+        childController=[[BIDDisclosureDetailController alloc]initWithNibName:@"BIDDisclosureDetail" bundle:nil];
+    }
+    NSUInteger row=[indexPath row];
+    NSString *title=[self.list objectAtIndex:row];
+    childController.title=title;
+    NSString *detailmsg=[[NSString alloc]initWithFormat:@"You pressed button %@.",title];
+    childController.message=detailmsg;
+    [self.navigationController pushViewController:childController animated:YES];
+}
 /*
 #pragma mark - Navigation
 
