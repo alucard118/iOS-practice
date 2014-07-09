@@ -76,6 +76,9 @@
     childController.title=title;
     NSString *detailmsg=[[NSString alloc]initWithFormat:@"You pressed button %@.",title];
     childController.message=detailmsg;
+    UIBarButtonItem *back=[[UIBarButtonItem alloc]init];
+    back.title=@"返回";
+    self.navigationItem.backBarButtonItem=back;
     [self.navigationController pushViewController:childController animated:YES];
 }
 /*
