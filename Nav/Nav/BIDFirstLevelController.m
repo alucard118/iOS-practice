@@ -75,6 +75,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSUInteger row =[indexPath row];
     BIDSecondLevelViewController *nextController=[self.controllers objectAtIndex:row];
+    UIBarButtonItem *back=[[UIBarButtonItem alloc]init];
+    back.title=@"返回";
+    self.navigationItem.backBarButtonItem=back;
     [self.navigationController pushViewController:nextController animated:YES];
 }
 

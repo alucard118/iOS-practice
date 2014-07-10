@@ -5,31 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-<<<<<<< HEAD
-	<string>7A72A206-E45B-4901-8E9E-AD9234C0B82F</string>
-=======
-	<string>5B57B27F-4F2C-45F8-8728-89FC8DE17BFD</string>
->>>>>>> FETCH_HEAD
+	<string>D2CB09DB-2323-44FC-A539-368E9D305BDB</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Nav</string>
+	<string>TechNews 3</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-<<<<<<< HEAD
-		<key>EA0CA6FC-801A-4D10-99DA-064566EB0100</key>
-=======
 		<key>3CC12B93-D205-4243-9197-6AF3B95FAE65</key>
->>>>>>> FETCH_HEAD
 		<string>https://github.com/alucard118/iOS-practice.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Nav/Nav.xcodeproj/project.xcworkspace</string>
+	<string>TechNews 3/TechNews 3.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-<<<<<<< HEAD
-		<key>EA0CA6FC-801A-4D10-99DA-064566EB0100</key>
-=======
 		<key>3CC12B93-D205-4243-9197-6AF3B95FAE65</key>
->>>>>>> FETCH_HEAD
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -37,22 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-<<<<<<< HEAD
-	<string>EA0CA6FC-801A-4D10-99DA-064566EB0100</string>
-=======
 	<string>3CC12B93-D205-4243-9197-6AF3B95FAE65</string>
->>>>>>> FETCH_HEAD
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-<<<<<<< HEAD
-			<string>EA0CA6FC-801A-4D10-99DA-064566EB0100</string>
-=======
 			<string>3CC12B93-D205-4243-9197-6AF3B95FAE65</string>
->>>>>>> FETCH_HEAD
 			<key>IDESourceControlWCCName</key>
 			<string>iOS-practice</string>
 		</dict>
