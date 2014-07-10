@@ -17,6 +17,11 @@
 @property(strong,nonatomic)UINavigationController *thirdNavController;
 @property(strong,nonatomic)UINavigationController *fourthNavController;
 
+@property(strong,nonatomic)UIViewController *firstView;
+@property(strong,nonatomic)UIViewController *secondView;
+@property(strong,nonatomic)UIViewController *thirdView;
+@property(strong,nonatomic)UIViewController *fourthView;
+
 @property(strong,nonatomic)UITabBarController *tabBarController;
 
 

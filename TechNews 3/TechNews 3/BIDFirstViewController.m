@@ -9,8 +9,10 @@
 #import "BIDFirstViewController.h"
 #import "BIDFirstScrollViewCell.h"
 #import "BIDCCFNewsTableViewCell.h"
+#import "BIDAppDelegate.h"
 
 #define kDuration 0.7
+
 
 @interface BIDFirstViewController ()
 
@@ -34,6 +36,14 @@
     [super viewDidLoad];
     self.navigationItem.title=@"CCF新闻";
     
+
+    //生成表视图
+    firstTableView=[[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain  ];
+    firstTableView.delegate=self;
+    firstTableView.dataSource=self;
+    firstTableView.autoresizingMask=UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    [self.view addSubview:firstTableView];
+    
     //添加手势识别
     UISwipeGestureRecognizer *recognizerRight=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipesRight:)];
     UISwipeGestureRecognizer *recognizerLeft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipesLeft:)];
@@ -46,16 +56,40 @@
     [self.view addGestureRecognizer:recognizerRight];
     [self.view addGestureRecognizer:recognizerLeft];
     
-    //生成表视图
-    firstTableView=[[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain  ];
-    firstTableView.delegate=self;
-    firstTableView.dataSource=self;
-    firstTableView.autoresizingMask=UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    [self.view addSubview:firstTableView];
-    
     
     // Do any additional setup after loading the view from its nib.
 }
+
+
+-(void)handleSwipesLeft:(UISwipeGestureRecognizer *)paramSender{
+    CATransition *animation = [CATransition animation];
+    animation.delegate = self;
+    animation.duration = kDuration;
+    animation.timingFunction = UIViewAnimationCurveEaseInOut;
+    animation.type=kCATransitionPush;
+    animation.subtype = kCATransitionFromRight;
+
+    [self.view.layer addAnimation:animation forKey:@"animation"];
+    
+
+    //self.tabBarController.selectedIndex=1;
+
+}
+
+-(void)handleSwipesRight:(UISwipeGestureRecognizer *)paramSender{
+    CATransition *animation = [CATransition animation];
+    animation.delegate = self;
+    animation.duration = kDuration;
+    animation.timingFunction = UIViewAnimationCurveEaseInOut;
+    animation.type=kCATransitionPush;
+    animation.subtype = kCATransitionFromLeft;
+
+    [self.view.layer addAnimation:animation forKey:@"animation"];
+
+    //self.tabBarController.selectedIndex=3;
+    
+}
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 2;
 }
@@ -114,26 +148,5 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)handleSwipesLeft:(UISwipeGestureRecognizer *)paramSender{
-    CATransition *animation = [CATransition animation];
-    animation.delegate = self;
-    animation.duration = kDuration;
-    animation.timingFunction = UIViewAnimationCurveEaseInOut;
-    animation.type=kCATransitionPush;
-    animation.subtype = kCATransitionFromRight;
-    [[self.tabBarController.view layer]addAnimation:animation forKey:@"animation"];
-    self.tabBarController.selectedIndex=1;
-}
-
--(void)handleSwipesRight:(UISwipeGestureRecognizer *)paramSender{
-    CATransition *animation = [CATransition animation];
-    animation.delegate = self;
-    animation.duration = kDuration;
-    animation.timingFunction = UIViewAnimationCurveEaseInOut;
-    animation.type=kCATransitionPush;
-    animation.subtype = kCATransitionFromLeft;
-    [[self.tabBarController.view layer]addAnimation:animation forKey:@"animation"];
-    self.tabBarController.selectedIndex=3;
-}
 
 @end
