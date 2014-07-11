@@ -38,11 +38,11 @@
     
 
     //生成表视图
-    firstTableView=[[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain  ];
-    firstTableView.delegate=self;
-    firstTableView.dataSource=self;
-    firstTableView.autoresizingMask=UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    [self.view addSubview:firstTableView];
+//    firstTableView=[[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain  ];
+//    firstTableView.delegate=self;
+//    firstTableView.dataSource=self;
+//    firstTableView.autoresizingMask=UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+//    [self.view addSubview:firstTableView];
     
     //添加手势识别
     UISwipeGestureRecognizer *recognizerRight=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipesRight:)];
