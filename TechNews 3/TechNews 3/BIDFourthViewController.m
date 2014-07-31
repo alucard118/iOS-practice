@@ -27,8 +27,35 @@
 {
     [super viewDidLoad];
     self.navigationItem.title=@"会员中心";
+    //添加手势识别
+    UISwipeGestureRecognizer *recognizerRight=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipesRight:)];
+    UISwipeGestureRecognizer *recognizerLeft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipesLeft:)];
+    recognizerRight.direction=UISwipeGestureRecognizerDirectionRight;
+    recognizerLeft.direction=UISwipeGestureRecognizerDirectionLeft;
+    
+    recognizerRight.numberOfTouchesRequired=1;
+    recognizerLeft.numberOfTouchesRequired=1;
+    
+    [self.view addGestureRecognizer:recognizerRight];
+    [self.view addGestureRecognizer:recognizerLeft];
+
     // Do any additional setup after loading the view from its nib.
 }
+
+-(void)handleSwipesLeft:(UISwipeGestureRecognizer *)paramSender{
+    
+    
+    self.tabBarController.selectedIndex=0;
+    
+}
+
+-(void)handleSwipesRight:(UISwipeGestureRecognizer *)paramSender{
+    
+    
+    self.tabBarController.selectedIndex=2;
+    
+}
+
 
 - (void)didReceiveMemoryWarning
 {

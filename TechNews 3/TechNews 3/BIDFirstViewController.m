@@ -22,6 +22,7 @@
 
 @synthesize firstTableView;
 @synthesize newsArray;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -38,11 +39,11 @@
     
 
     //生成表视图
-//    firstTableView=[[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain  ];
-//    firstTableView.delegate=self;
-//    firstTableView.dataSource=self;
-//    firstTableView.autoresizingMask=UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-//    [self.view addSubview:firstTableView];
+    firstTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 70, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain  ];
+    firstTableView.delegate=self;
+    firstTableView.dataSource=self;
+    firstTableView.autoresizingMask=UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    [self.view addSubview:firstTableView];
     
     //添加手势识别
     UISwipeGestureRecognizer *recognizerRight=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipesRight:)];
@@ -62,81 +63,40 @@
 
 
 -(void)handleSwipesLeft:(UISwipeGestureRecognizer *)paramSender{
-    CATransition *animation = [CATransition animation];
-    animation.delegate = self;
-    animation.duration = kDuration;
-    animation.timingFunction = UIViewAnimationCurveEaseInOut;
-    animation.type=kCATransitionPush;
-    animation.subtype = kCATransitionFromRight;
-
-    [self.view.layer addAnimation:animation forKey:@"animation"];
     
 
-    //self.tabBarController.selectedIndex=1;
+    self.tabBarController.selectedIndex=1;
 
 }
 
 -(void)handleSwipesRight:(UISwipeGestureRecognizer *)paramSender{
-    CATransition *animation = [CATransition animation];
-    animation.delegate = self;
-    animation.duration = kDuration;
-    animation.timingFunction = UIViewAnimationCurveEaseInOut;
-    animation.type=kCATransitionPush;
-    animation.subtype = kCATransitionFromLeft;
 
-    [self.view.layer addAnimation:animation forKey:@"animation"];
 
-    //self.tabBarController.selectedIndex=3;
+    self.tabBarController.selectedIndex=3;
     
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 1;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSInteger result=0;
-    if ([tableView isEqual:firstTableView]) {
-        switch (section) {
-            case 0:
-                result=1;
-                break;
-            case 1:
-                result=[newsArray count];
-                
-            default:
-                break;
-        }
-    }
-    return result;
+    return [newsArray count]+1;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellTableIdentifier=@"CellTableIdentifier";
     //tableView.separatorStyle=UITableViewCellSelectionStyleNone;
-    BIDFirstScrollViewCell *firstScroll=[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     BIDCCFNewsTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
-    if(indexPath.section==0){
-            
-            if (firstScroll==nil) {
-                firstScroll=[[BIDFirstScrollViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellTableIdentifier];
-            }
-        
+    if (cell==nil) {
+        cell=[[BIDCCFNewsTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellTableIdentifier];
     }
-    if(indexPath.section==1){
-            
-            if (cell==nil) {
-                cell=[[BIDCCFNewsTableViewCell  alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellTableIdentifier];
-                
-            }
-            NSInteger row=[indexPath row];
-            NSDictionary *rowData=[newsArray objectAtIndex:row];
-            cell.title=[rowData objectForKey:@"Name"];
-            cell.summary=[rowData objectForKey:@"Words"];
-            cell.imagesName=[rowData objectForKey:@"Images"];
-            
-        }
-    return firstScroll;
+    NSInteger row=[indexPath row];
+    NSDictionary *rowData=[newsArray objectAtIndex:row];
+    cell.title=[rowData objectForKey:@"Name"];
+    cell.summary=[rowData objectForKey:@"Words"];
+    cell.imagesName=[rowData objectForKey:@"Images"];
+    
     return cell;
 }
 
