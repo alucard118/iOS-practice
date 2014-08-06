@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1FB811041991DA3900D52E7C /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB810FF1991DA3900D52E7C /* TFHpple.m */; };
+		1FB811051991DA3900D52E7C /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB811011991DA3900D52E7C /* TFHppleElement.m */; };
+		1FB811061991DA3900D52E7C /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB811031991DA3900D52E7C /* XPathQuery.m */; };
 		1FBC4DC7196A836200B379AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FBC4DC6196A836200B379AE /* Foundation.framework */; };
 		1FBC4DC9196A836200B379AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FBC4DC8196A836200B379AE /* CoreGraphics.framework */; };
 		1FBC4DCB196A836200B379AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FBC4DCA196A836200B379AE /* UIKit.framework */; };
@@ -22,6 +25,7 @@
 		1FBC4DF0196A836200B379AE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1FBC4DEE196A836200B379AE /* InfoPlist.strings */; };
 		1FBC4DF2196A836200B379AE /* XML_ParseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBC4DF1196A836200B379AE /* XML_ParseTests.m */; };
 		1FBC4E02196BB1C400B379AE /* BIDNewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBC4E01196BB1C400B379AE /* BIDNewsTableViewCell.m */; };
+		1FC210E81988E02F00A6F283 /* BIDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC210E71988E02F00A6F283 /* BIDXML.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +39,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1FB810FE1991DA3900D52E7C /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
+		1FB810FF1991DA3900D52E7C /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
+		1FB811001991DA3900D52E7C /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
+		1FB811011991DA3900D52E7C /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
+		1FB811021991DA3900D52E7C /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		1FB811031991DA3900D52E7C /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 		1FBC4DC3196A836200B379AE /* XML Parse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XML Parse.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FBC4DC6196A836200B379AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1FBC4DC8196A836200B379AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -56,6 +66,8 @@
 		1FBC4DF1196A836200B379AE /* XML_ParseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XML_ParseTests.m; sourceTree = "<group>"; };
 		1FBC4E00196BB1C400B379AE /* BIDNewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BIDNewsTableViewCell.h; sourceTree = "<group>"; };
 		1FBC4E01196BB1C400B379AE /* BIDNewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BIDNewsTableViewCell.m; sourceTree = "<group>"; };
+		1FC210E61988E02F00A6F283 /* BIDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BIDXML.h; sourceTree = "<group>"; };
+		1FC210E71988E02F00A6F283 /* BIDXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BIDXML.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +127,12 @@
 		1FBC4DCC196A836200B379AE /* XML Parse */ = {
 			isa = PBXGroup;
 			children = (
+				1FB810FE1991DA3900D52E7C /* TFHpple.h */,
+				1FB810FF1991DA3900D52E7C /* TFHpple.m */,
+				1FB811001991DA3900D52E7C /* TFHppleElement.h */,
+				1FB811011991DA3900D52E7C /* TFHppleElement.m */,
+				1FB811021991DA3900D52E7C /* XPathQuery.h */,
+				1FB811031991DA3900D52E7C /* XPathQuery.m */,
 				1FBC4DD5196A836200B379AE /* BIDAppDelegate.h */,
 				1FBC4DD6196A836200B379AE /* BIDAppDelegate.m */,
 				1FBC4DD8196A836200B379AE /* Main.storyboard */,
@@ -124,6 +142,8 @@
 				1FBC4DCD196A836200B379AE /* Supporting Files */,
 				1FBC4E00196BB1C400B379AE /* BIDNewsTableViewCell.h */,
 				1FBC4E01196BB1C400B379AE /* BIDNewsTableViewCell.m */,
+				1FC210E61988E02F00A6F283 /* BIDXML.h */,
+				1FC210E71988E02F00A6F283 /* BIDXML.m */,
 			);
 			path = "XML Parse";
 			sourceTree = "<group>";
@@ -256,6 +276,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FBC4E02196BB1C400B379AE /* BIDNewsTableViewCell.m in Sources */,
+				1FB811051991DA3900D52E7C /* TFHppleElement.m in Sources */,
+				1FB811061991DA3900D52E7C /* XPathQuery.m in Sources */,
+				1FB811041991DA3900D52E7C /* TFHpple.m in Sources */,
+				1FC210E81988E02F00A6F283 /* BIDXML.m in Sources */,
 				1FBC4DD7196A836200B379AE /* BIDAppDelegate.m in Sources */,
 				1FBC4DDD196A836200B379AE /* BIDViewController.m in Sources */,
 				1FBC4DD3196A836200B379AE /* main.m in Sources */,
@@ -385,8 +409,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XML Parse/XML Parse-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Volumes/MyMac/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"${SDKROOT}/usr/include/libxml2/**",
+				);
 				INFOPLIST_FILE = "XML Parse/XML Parse-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -399,8 +429,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XML Parse/XML Parse-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Volumes/MyMac/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"${SDKROOT}/usr/include/libxml2/**",
+				);
 				INFOPLIST_FILE = "XML Parse/XML Parse-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -465,6 +501,7 @@
 				1FBC4DF7196A836200B379AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1FBC4DF8196A836200B379AE /* Build configuration list for PBXNativeTarget "XML ParseTests" */ = {
 			isa = XCConfigurationList;
@@ -473,6 +510,7 @@
 				1FBC4DFA196A836200B379AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

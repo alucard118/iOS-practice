@@ -8,6 +8,7 @@
 
 #import "BIDNewsTableViewCell.h"
 
+
 #define kTitleValueTag 1
 #define kLinkValueTag 2
 #define kDescriptionValueTag 3

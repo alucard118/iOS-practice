@@ -8,12 +8,14 @@
 
 #import "BIDViewController.h"
 #import "BIDNewsTableViewCell.h"
+#import "TFHpple.h"
 
 @interface BIDViewController ()
 
 @end
 
 @implementation BIDViewController
+
 @synthesize newsTitle;
 @synthesize newsLink;
 @synthesize description;
@@ -27,16 +29,39 @@
     UITableView *tableView=[[UITableView alloc]initWithFrame:tableViewRect];
     tableView.delegate=self;
     tableView.dataSource=self;
+    
+    NSXMLParser *xmlFile=[[NSXMLParser alloc]initWithContentsOfURL:[NSURL URLWithString:@"http://news.163.com/special/00011K6L/rss_newstop.xml"]];
+    xmlFile.delegate=self;
+    [xmlFile parse];
     [self.view addSubview:tableView];
    // NSString *xmlFilePath=[[NSBundle mainBundle]pathForResource:@"rss_newstop" ofType:@"xml"];
    // NSData *data=[[NSData alloc]initWithContentsOfFile:xmlFilePath];
-    NSXMLParser *xmlParser=[[NSXMLParser alloc]initWithContentsOfURL:[NSURL URLWithString:@"http://news.163.com/special/00011K6L/rss_newstop.xml"]];
-    self.tempString=nil;
-    xmlParser.delegate=self;
-    [xmlParser parse];
-    for (NSUInteger i=0; i<[newsTitle count]; i++) {
-        NSLog(@"Title=%@ \n",[newsTitle objectAtIndex:i]);
+
+    
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [newsTitle count];
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *CellTableIdentifier=@"CellTableIdentifierl";
+    BIDNewsTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    if (cell==nil) {
+        cell=[[BIDNewsTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellTableIdentifier];
     }
+    NSInteger row=[indexPath row];
+    cell.title=[newsTitle objectAtIndex:row];
+    cell.description=[self flattenHTML:[description objectAtIndex:row]];
+    return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 70.0;
+}
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict{
@@ -74,29 +99,32 @@
     self.tempString=nil;
 }
 
+- (NSString *)flattenHTML:(NSString *)html {
+    
+    NSScanner *theScanner;
+    NSString *text = nil;
+    
+    theScanner = [NSScanner scannerWithString:html];
+    
+    while ([theScanner isAtEnd] == NO) {
+        
+        // find start of tag
+        [theScanner scanUpToString:@"<" intoString:NULL] ;
+        
+        // find end of tag
+        [theScanner scanUpToString:@">" intoString:&text] ;
+        
+        // replace the found tag with a space
+        //(you can filter multi-spaces out later if you wish)
+        html = [html stringByReplacingOccurrencesOfString:
+                [ NSString stringWithFormat:@"%@>", text]
+                                               withString:@" "];
+        
+    } // while //
+    
+    return html;
+    
+}
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [newsTitle count];
-}
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *CellTableIdentifier=@"CellTableIdentifierl";
-    BIDNewsTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
-    if (cell==nil) {
-        cell=[[BIDNewsTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellTableIdentifier];
-    }
-    NSInteger row=[indexPath row];
-    cell.title=[newsTitle objectAtIndex:row];
-    cell.description=[description objectAtIndex:row];
-    return cell;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 70.0;
-}
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end
