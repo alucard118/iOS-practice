@@ -10,8 +10,7 @@
 
 @interface BIDCCFNewsTableViewCell : UITableViewCell
 
-@property(copy,nonatomic)NSString *title;
-@property(copy,nonatomic)NSString *summary;
-@property(copy,nonatomic)NSString *imagesName;
-
+@property(strong,nonatomic)NSString *title;
+@property(strong,nonatomic)NSString *description;
+@property(strong,nonatomic)NSString *link;
 @end

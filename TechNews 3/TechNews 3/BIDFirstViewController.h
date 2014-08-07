@@ -11,8 +11,14 @@
 
 @interface BIDFirstViewController : UIViewController
 
-<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
+<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,NSXMLParserDelegate>
 @property(strong,nonatomic)UITableView *firstTableView;
-@property(strong,nonatomic)NSMutableArray *newsArray;
+
+
+@property(strong,nonatomic)NSMutableArray *newsTitle;
+@property(strong,nonatomic)NSMutableArray *newsLink;
+@property(strong,nonatomic)NSMutableArray *description;
+@property(strong,nonatomic)NSMutableString *tempString;
+- (NSString *)flattenHTML:(NSString *)html;
 
 @end

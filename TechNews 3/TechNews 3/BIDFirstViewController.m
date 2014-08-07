@@ -11,7 +11,6 @@
 #import "BIDCCFNewsTableViewCell.h"
 #import "BIDAppDelegate.h"
 
-#define kDuration 0.7
 
 
 @interface BIDFirstViewController ()
@@ -21,7 +20,10 @@
 @implementation BIDFirstViewController
 
 @synthesize firstTableView;
-@synthesize newsArray;
+@synthesize newsTitle;
+@synthesize newsLink;
+@synthesize description;
+@synthesize tempString;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,10 +41,15 @@
     
 
     //生成表视图
-    firstTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 70, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain  ];
+    firstTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain  ];
     firstTableView.delegate=self;
     firstTableView.dataSource=self;
     firstTableView.autoresizingMask=UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    
+    NSXMLParser *xmlFile=[[NSXMLParser alloc]initWithContentsOfURL:[NSURL URLWithString:@"http://202.85.212.149/news2.xml"]];
+    xmlFile.delegate=self;
+    [xmlFile parse];
+    
     [self.view addSubview:firstTableView];
     
     //添加手势识别
@@ -80,8 +87,12 @@
     return 1;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 70;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [newsArray count]+1;
+    return [self.newsTitle count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -92,13 +103,74 @@
         cell=[[BIDCCFNewsTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellTableIdentifier];
     }
     NSInteger row=[indexPath row];
-    NSDictionary *rowData=[newsArray objectAtIndex:row];
-    cell.title=[rowData objectForKey:@"Name"];
-    cell.summary=[rowData objectForKey:@"Words"];
-    cell.imagesName=[rowData objectForKey:@"Images"];
+    cell.title=[newsTitle objectAtIndex:row];
+    cell.description=[self flattenHTML:[description objectAtIndex:row]];
+    cell.link=[newsLink objectAtIndex:row];
     
     return cell;
 }
+
+
+-(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict{
+    if ([elementName isEqual:@"title"]) {
+        if(self.newsTitle==nil)
+            self.newsTitle=[[NSMutableArray alloc]init];
+    }
+    if ([elementName isEqual:@"link"]) {
+        if(self.newsLink==nil)
+            self.newsLink=[[NSMutableArray alloc]init];
+    }
+    if ([elementName isEqual:@"description"]) {
+        if(self.description==nil)
+            self.description=[[NSMutableArray alloc]init];
+    }
+}
+
+-(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string{
+    if (self.tempString==nil) {
+        self.tempString=[[NSMutableString alloc]init];
+    }
+    [self.tempString appendString:string];
+}
+
+-(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName{
+    if ([elementName isEqual:@"title"]) {
+        [self.newsTitle addObject:self.tempString];
+    }
+    else if ([elementName isEqual:@"link"]){
+        [self.newsLink addObject:self.tempString];
+    }
+    else if ([elementName isEqual:@"description"]){
+        [self.description addObject:self.tempString];
+    }
+    self.tempString=nil;
+}
+
+- (NSString *)flattenHTML:(NSString *)html {
+    
+    NSScanner *theScanner;
+    NSString *text = nil;
+    
+    theScanner = [NSScanner scannerWithString:html];
+    
+    while ([theScanner isAtEnd] == NO) {
+        
+        // find start of tag
+        [theScanner scanUpToString:@"<" intoString:NULL] ;
+        
+        // find end of tag
+        [theScanner scanUpToString:@">" intoString:&text] ;
+        
+        // replace the found tag with a space
+        //(you can filter multi-spaces out later if you wish)
+        html = [html stringByReplacingOccurrencesOfString:[ NSString stringWithFormat:@"%@>", text] withString:@" "];
+        
+    } // while //
+    
+    return html;
+    
+}
+
 
 
 - (void)didReceiveMemoryWarning
