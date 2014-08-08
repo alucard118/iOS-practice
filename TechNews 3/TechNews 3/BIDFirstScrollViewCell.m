@@ -10,14 +10,120 @@
 
 @implementation BIDFirstScrollViewCell
 
+@synthesize scrollView;
+@synthesize pageControl;
+@synthesize arrayImages;
+@synthesize viewController;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+   
+        NSData *data1=[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://202.85.212.155/ccf/imageNews/1.jpg"]];
+        NSData *data2=[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://202.85.212.155/ccf/imageNews/2.jpg"]];
+        NSData *data3=[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://202.85.212.155/ccf/imageNews/3.jpg"]];
+        NSData *data4=[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://202.85.212.155/ccf/imageNews/4.jpg"]];
+        NSData *data5=[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://202.85.212.155/ccf/imageNews/5.jpg"]];
+        self.arrayImages=[NSArray arrayWithObjects:[UIImage imageWithData:data1],[UIImage imageWithData:data2],[UIImage imageWithData:data3],[UIImage imageWithData:data4],[UIImage imageWithData:data5], nil];
+        
+        CGRect imageNewRect=CGRectMake(0, 0, self.bounds.size.width, 120);
+        self.scrollView=[[UIScrollView alloc]initWithFrame:imageNewRect];
+        scrollView.showsHorizontalScrollIndicator=NO;
+        scrollView.showsVerticalScrollIndicator=NO;
+        scrollView.delegate=self;
+        scrollView.backgroundColor=[UIColor lightGrayColor];
+        scrollView.contentSize=CGSizeMake(self.bounds.size.width*[self.arrayImages count], 120);
+        
+        pageControl=[[UIPageControl alloc]initWithFrame:CGRectMake(0, self.scrollView.frame.size.height-20, 320, 20)];
+//        [pageControl setBackgroundColor:[UIColor blackColor]];
+        
+        pageControl.currentPage=0;
+        pageControl.numberOfPages=[self.arrayImages count];
+        [pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
+        
+        
+        [self loadScrollViewPage:0];
+        [self loadScrollViewPage:1];
+        [self loadScrollViewPage:2];
+        [self loadScrollViewPage:3];
+        [self loadScrollViewPage:4];
+        [self.contentView addSubview:scrollView];
+        [self.contentView addSubview:pageControl];
+        [NSTimer timerWithTimeInterval:1 target:self selector:@selector(scrollPages) userInfo:nil repeats:YES];
         // Initialization code
+        
     }
     return self;
 }
+
+-(void)loadScrollViewPage:(NSInteger)page{
+    if (page>=self.arrayImages.count) {
+        return;
+    }
+    UIViewController *imageViewController=[self.viewController objectAtIndex:page];
+    if (imageViewController==nil) {
+        imageViewController=[[UIViewController alloc] init];
+        [self.viewController replaceObjectAtIndex:page withObject:imageViewController];
+    }
+    
+    if (imageViewController.view.superview==nil) {
+        CGRect frame=self.scrollView.frame;
+        frame.origin.x=CGRectGetWidth(frame)*page;
+        frame.origin.y=0;
+        imageViewController.view.frame=frame;
+        
+        [self.scrollView addSubview:imageViewController.view];
+        [imageViewController.view setBackgroundColor:[UIColor colorWithPatternImage:[self.arrayImages objectAtIndex:page]]];
+    }
+}
+
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+ {
+        CGFloat pageWidth = CGRectGetWidth(self.scrollView.frame);
+        NSInteger page = floor((self.scrollView.contentOffset.x -pageWidth/2)/pageWidth) +1;
+        self.pageControl.currentPage = page;
+         [self loadScrollViewPage:page-1];
+        [self loadScrollViewPage:page];
+        [self loadScrollViewPage:page+1];
+}
+
+- (IBAction)changePage:(id)sender
+ {
+        NSInteger page = self.pageControl.currentPage;
+        [self loadScrollViewPage:page - 1];
+        [self loadScrollViewPage:page];
+        [self loadScrollViewPage:page + 1];
+
+       CGRect bounds = self.scrollView.bounds;
+        bounds.origin.x = CGRectGetWidth(bounds) * page;
+        bounds.origin.y = 0;
+        [self.scrollView scrollRectToVisible:bounds animated:YES];
+}
+
+-(void)scrollPages
+{
+        ++self.pageControl.currentPage;
+       CGFloat pageWidth = CGRectGetWidth(self.scrollView.frame);
+        if (isFromStart) {
+                [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+                self.pageControl.currentPage = 0;
+            }
+        else
+            {
+                     [self.scrollView setContentOffset:CGPointMake(pageWidth*self.pageControl.currentPage, self.scrollView.bounds.origin.y)];
+            
+                 }
+        if (pageControl.currentPage == pageControl.numberOfPages - 1) {
+                isFromStart = YES;
+            }
+        else
+            {
+                    isFromStart = NO;
+                }
+     }
+
 
 - (void)awakeFromNib
 {

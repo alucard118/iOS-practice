@@ -19,6 +19,7 @@
 @property(strong,nonatomic)NSMutableArray *newsLink;
 @property(strong,nonatomic)NSMutableArray *description;
 @property(strong,nonatomic)NSMutableString *tempString;
+@property(strong,nonatomic)UITableViewCell *cell;
 - (NSString *)flattenHTML:(NSString *)html;
 
 @end

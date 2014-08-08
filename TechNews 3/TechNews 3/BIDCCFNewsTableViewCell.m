@@ -13,6 +13,7 @@
 #define kLinkValueTag 2
 #define kDescriptionValueTag 3
 
+
 @implementation BIDCCFNewsTableViewCell
 
 @synthesize title;
@@ -67,7 +68,7 @@
     if (![l isEqual:link]) {
         link=[l copy];
         UIImageView *linkImageView=(UIImageView *)[self.contentView viewWithTag:kLinkValueTag];
-        NSString *urlString=[[@"http://202.85.212.149/ccf/news/" stringByAppendingString:[link stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]] stringByAppendingString:@"/thumbnail.jpg"];
+        NSString *urlString=[[@"http://202.85.212.155/ccf/news/" stringByAppendingString:[link stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]] stringByAppendingString:@"/thumbnail.jpg"];
  
         linkImageView.image=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]]];
     }

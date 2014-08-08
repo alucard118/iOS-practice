@@ -46,7 +46,7 @@
     firstTableView.dataSource=self;
     firstTableView.autoresizingMask=UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     
-    NSXMLParser *xmlFile=[[NSXMLParser alloc]initWithContentsOfURL:[NSURL URLWithString:@"http://202.85.212.149/news2.xml"]];
+    NSXMLParser *xmlFile=[[NSXMLParser alloc]initWithContentsOfURL:[NSURL URLWithString:@"http://202.85.212.155/news2.xml"]];
     xmlFile.delegate=self;
     [xmlFile parse];
     
@@ -111,35 +111,32 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    BIDCCFNewsTableViewCell *cell;
+    BIDFirstScrollViewCell *cell1;
+    BIDCCFNewsTableViewCell *cell2;
     if (indexPath.section==0) {
-        static NSString *CellTableIdentifier=@"CellTableIdentifier";
-        //tableView.separatorStyle=UITableViewCellSelectionStyleNone;
-        cell=[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
-        if (cell==nil) {
-            cell=[[BIDCCFNewsTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellTableIdentifier];
-        }
-        NSInteger row=[indexPath row];
-        cell.title=[newsTitle objectAtIndex:row];
-        cell.description=[self flattenHTML:[description objectAtIndex:row]];
-        cell.link=[newsLink objectAtIndex:row];
         
-
+        //tableView.separatorStyle=UITableViewCellSelectionStyleNone;
+        if (cell1==nil) {
+            cell1=[[BIDFirstScrollViewCell alloc] init];
+        }
+        
+        self.cell=cell1;
     }
     
     else if (indexPath.section==1) {
-
+      
         static NSString *CellTableIdentifier=@"CellTableIdentifier";
         //tableView.separatorStyle=UITableViewCellSelectionStyleNone;
-        cell=[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
-        if (cell==nil) {
-            cell=[[BIDCCFNewsTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellTableIdentifier];
+        cell2=[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+        if (cell2==nil) {
+            cell2=[[BIDCCFNewsTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellTableIdentifier];
         }
         NSInteger row=[indexPath row];
-        cell.title=[newsTitle objectAtIndex:row];
-        cell.description=[self flattenHTML:[description objectAtIndex:row]];
-        cell.link=[newsLink objectAtIndex:row];
-           }
+        cell2.title=[newsTitle objectAtIndex:row];
+        cell2.description=[self flattenHTML:[description objectAtIndex:row]];
+        cell2.link=[newsLink objectAtIndex:row];
+        self.cell=cell2;
+    }
 //    UITableViewCell *cell;
 //    if (indexPath.section==0) {
 //        if (cell==nil) {
@@ -153,7 +150,7 @@
 //        }
 //    }
 //    
-    return cell;
+    return self.cell;
 }
 
 
