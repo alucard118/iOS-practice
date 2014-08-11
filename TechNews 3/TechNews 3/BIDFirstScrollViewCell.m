@@ -25,7 +25,23 @@
         NSData *data3=[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://202.85.212.155/ccf/imageNews/3.jpg"]];
         NSData *data4=[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://202.85.212.155/ccf/imageNews/4.jpg"]];
         NSData *data5=[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://202.85.212.155/ccf/imageNews/5.jpg"]];
-        self.arrayImages=[NSArray arrayWithObjects:[UIImage imageWithData:data1],[UIImage imageWithData:data2],[UIImage imageWithData:data3],[UIImage imageWithData:data4],[UIImage imageWithData:data5], nil];
+        
+        UIImageView *imageView1=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 120)];
+        imageView1.contentMode=UIViewContentModeScaleAspectFill;
+        imageView1.image=[UIImage imageWithData:data1];
+        UIImageView *imageView2=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 120)];
+        imageView2.contentMode=UIViewContentModeScaleAspectFill;
+        imageView2.image=[UIImage imageWithData:data2];
+        UIImageView *imageView3=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 120)];
+        imageView3.contentMode=UIViewContentModeScaleAspectFill;
+        imageView3.image=[UIImage imageWithData:data3];
+        UIImageView *imageView4=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 120)];
+        imageView4.contentMode=UIViewContentModeScaleAspectFill;
+        imageView4.image=[UIImage imageWithData:data4];
+        UIImageView *imageView5=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 120)];
+        imageView5.contentMode=UIViewContentModeScaleAspectFill;
+        imageView5.image=[UIImage imageWithData:data5];
+        self.arrayImages=[NSArray arrayWithObjects:imageView1,imageView2,imageView3,imageView4,imageView5, nil];
         
         CGRect imageNewRect=CGRectMake(0, 0, self.bounds.size.width, 120);
         self.scrollView=[[UIScrollView alloc]initWithFrame:imageNewRect];
@@ -74,7 +90,7 @@
         imageViewController.view.frame=frame;
         
         [self.scrollView addSubview:imageViewController.view];
-        [imageViewController.view setBackgroundColor:[UIColor colorWithPatternImage:[self.arrayImages objectAtIndex:page]]];
+        imageViewController.view=[self.arrayImages objectAtIndex:page];
     }
 }
 

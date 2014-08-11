@@ -114,10 +114,11 @@
     BIDFirstScrollViewCell *cell1;
     BIDCCFNewsTableViewCell *cell2;
     if (indexPath.section==0) {
-        
+        static NSString *CellTableReuse=@"Cell";
         //tableView.separatorStyle=UITableViewCellSelectionStyleNone;
+        cell1=[tableView dequeueReusableCellWithIdentifier:CellTableReuse];
         if (cell1==nil) {
-            cell1=[[BIDFirstScrollViewCell alloc] init];
+            cell1=[[BIDFirstScrollViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellTableReuse];
         }
         
         self.cell=cell1;
