@@ -10,11 +10,13 @@
 #import "BIDFirstScrollViewCell.h"
 #import "BIDCCFNewsTableViewCell.h"
 #import "BIDAppDelegate.h"
+#import "BIDFirstViewDetailController.h"
 
-
+NSString *const IP=@"http://202.85.212.155/";
 
 @interface BIDFirstViewController ()
 
+@property(strong,nonatomic)BIDFirstViewDetailController *childController;
 @end
 
 @implementation BIDFirstViewController
@@ -24,6 +26,7 @@
 @synthesize newsLink;
 @synthesize description;
 @synthesize tempString;
+@synthesize childController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,7 +49,7 @@
     firstTableView.dataSource=self;
     firstTableView.autoresizingMask=UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     
-    NSXMLParser *xmlFile=[[NSXMLParser alloc]initWithContentsOfURL:[NSURL URLWithString:@"http://202.85.212.155/news2.xml"]];
+    NSXMLParser *xmlFile=[[NSXMLParser alloc]initWithContentsOfURL:[NSURL URLWithString:[IP stringByAppendingString:@"news2.xml"]]];
     xmlFile.delegate=self;
     [xmlFile parse];
     
@@ -152,6 +155,30 @@
 //    }
 //    
     return self.cell;
+}
+
+//点击单元格事件
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(childController==nil) {
+        childController=[[BIDFirstViewDetailController alloc]initWithNibName:@"BIDFirstViewDetailController" bundle:nil];
+        
+    }
+    
+    //获取点击行标题
+    NSUInteger row=[indexPath row];
+    childController.title=@"CCF NEWS";
+    childController.titleText=[newsTitle objectAtIndex:row];
+    childController.url=[newsLink objectAtIndex:row];
+    //设置下一级导航栏返回按钮
+    UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
+    backItem.title=@"返回";
+    self.navigationItem.backBarButtonItem=backItem;
+    
+    childController.hidesBottomBarWhenPushed=YES;
+    //压入下一个View
+    [self.navigationController pushViewController:childController animated:YES];
+    
+    
 }
 
 

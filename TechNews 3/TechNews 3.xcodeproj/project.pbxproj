@@ -28,6 +28,8 @@
 		0241F3D1196597D800C83732 /* BIDThirdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0241F3CF196597D800C83732 /* BIDThirdViewController.xib */; };
 		0241F3D5196597E700C83732 /* BIDFourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0241F3D3196597E700C83732 /* BIDFourthViewController.m */; };
 		0241F3D6196597E700C83732 /* BIDFourthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0241F3D4196597E700C83732 /* BIDFourthViewController.xib */; };
+		1F71E13D1998A7B400F36E3D /* BIDFirstViewDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E13B1998A7B400F36E3D /* BIDFirstViewDetailController.m */; };
+		1F71E13E1998A7B400F36E3D /* BIDFirstViewDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F71E13C1998A7B400F36E3D /* BIDFirstViewDetailController.xib */; };
 		1FBC4DB61966958D00B379AE /* BIDCCFNewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBC4DB51966958D00B379AE /* BIDCCFNewsTableViewCell.m */; };
 		1FBC4DB91966991100B379AE /* BIDFirstScrollViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBC4DB81966991100B379AE /* BIDFirstScrollViewCell.m */; };
 /* End PBXBuildFile section */
@@ -72,6 +74,9 @@
 		0241F3D2196597E700C83732 /* BIDFourthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BIDFourthViewController.h; sourceTree = "<group>"; };
 		0241F3D3196597E700C83732 /* BIDFourthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BIDFourthViewController.m; sourceTree = "<group>"; };
 		0241F3D4196597E700C83732 /* BIDFourthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BIDFourthViewController.xib; sourceTree = "<group>"; };
+		1F71E13A1998A7B400F36E3D /* BIDFirstViewDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BIDFirstViewDetailController.h; sourceTree = "<group>"; };
+		1F71E13B1998A7B400F36E3D /* BIDFirstViewDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BIDFirstViewDetailController.m; sourceTree = "<group>"; };
+		1F71E13C1998A7B400F36E3D /* BIDFirstViewDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BIDFirstViewDetailController.xib; sourceTree = "<group>"; };
 		1FBC4DB41966958D00B379AE /* BIDCCFNewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BIDCCFNewsTableViewCell.h; sourceTree = "<group>"; };
 		1FBC4DB51966958D00B379AE /* BIDCCFNewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BIDCCFNewsTableViewCell.m; sourceTree = "<group>"; };
 		1FBC4DB71966991100B379AE /* BIDFirstScrollViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BIDFirstScrollViewCell.h; sourceTree = "<group>"; };
@@ -164,6 +169,9 @@
 				1FBC4DB51966958D00B379AE /* BIDCCFNewsTableViewCell.m */,
 				1FBC4DB71966991100B379AE /* BIDFirstScrollViewCell.h */,
 				1FBC4DB81966991100B379AE /* BIDFirstScrollViewCell.m */,
+				1F71E13A1998A7B400F36E3D /* BIDFirstViewDetailController.h */,
+				1F71E13B1998A7B400F36E3D /* BIDFirstViewDetailController.m */,
+				1F71E13C1998A7B400F36E3D /* BIDFirstViewDetailController.xib */,
 			);
 			path = "TechNews 3";
 			sourceTree = "<group>";
@@ -277,6 +285,7 @@
 				0241F3A71965979E00C83732 /* Images.xcassets in Resources */,
 				0241F3D6196597E700C83732 /* BIDFourthViewController.xib in Resources */,
 				0241F3CC196597CC00C83732 /* BIDSecondViewController.xib in Resources */,
+				1F71E13E1998A7B400F36E3D /* BIDFirstViewDetailController.xib in Resources */,
 				0204347D196D82220089800C /* tabbar.png in Resources */,
 				0241F3D1196597D800C83732 /* BIDThirdViewController.xib in Resources */,
 				0241F3C7196597BB00C83732 /* BIDFirstViewController.xib in Resources */,
@@ -301,6 +310,7 @@
 				0241F3A51965979E00C83732 /* BIDAppDelegate.m in Sources */,
 				1FBC4DB61966958D00B379AE /* BIDCCFNewsTableViewCell.m in Sources */,
 				0241F3C6196597BB00C83732 /* BIDFirstViewController.m in Sources */,
+				1F71E13D1998A7B400F36E3D /* BIDFirstViewDetailController.m in Sources */,
 				0241F3CB196597CC00C83732 /* BIDSecondViewController.m in Sources */,
 				1FBC4DB91966991100B379AE /* BIDFirstScrollViewCell.m in Sources */,
 				0241F3A11965979E00C83732 /* main.m in Sources */,
